@@ -140,6 +140,7 @@ object Day22MoreColumnTransformations extends App {
 
   df2014.show(5)
 
+
   //TODO Task 1 - Filter only flights FROM US that happened more than 10 times
   println("flights FROM US that happened more than 10 times:")
   df2014.where(col("count") >10)
