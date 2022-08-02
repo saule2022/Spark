@@ -95,18 +95,17 @@ println("day difference")
   //TODO open March 1st , 2011
 
   val filePathMarch = "src/resources/retail-data/by-day/2011-03-01.csv"
-  val dfMarch = readCSVWithView(spark, filePath)
+  val dfMarch = readCSVWithView(spark, filePathMarch)
   //Add new column with current date
   //Add new column with current timestamp
 
-  dateDF.createOrReplaceTempView("dateTable")
 
   dfMarch.select(col("Description"), col("InvoiceDate"))
     .withColumn("today", current_date())
     .withColumn("now", current_timestamp())
     .withColumn("monthlyDifference", months_between(col("today"), col("InvoiceDate")))
     .withColumn("dayDifference", datediff(col("today"), col("InvoiceDate")))
-    .show(4)
+    .show(10)
 
   //add new column which contains days passed since InvoiceDate (here it is March 1, 2011 but it could vary)
   //add new column with months passed since InvoiceDate
