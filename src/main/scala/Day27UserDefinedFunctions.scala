@@ -83,7 +83,7 @@ println("in SQL")
   dfTemp
     //.withColumn(("temp in Fareng"), tempFudf(col("tempF")))
     .withColumn(("temp in Celsius"), tempCudf(col("tempF")))
-    .where("tempF>=90")
+    .where("tempF>=90 AND tempF<=110")
     .show(21, false)
 
 }
